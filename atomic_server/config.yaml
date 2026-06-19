@@ -1,0 +1,33 @@
+name: "Atomic Server"
+description: "Atomic Server running on Home Assistant"
+version: "raspberry-pi-5"
+slug: "atomic_server"
+url: "https://github.com/atomicdata-dev/hassio-atomic-server"
+arch:
+  - aarch64
+
+image: "docker.io/joepmeneer/atomic-server"
+init: false
+legacy: true
+stage: experimental
+startup: application
+boot: auto
+
+ports:
+  9883/tcp: 9883
+ports_description:
+  9883/tcp: "Atomic Server HTTP"
+
+webui: "http://[HOST]:[PORT:9883]/"
+watchdog: "tcp://[HOST]:[PORT:9883]"
+
+environment:
+  ATOMIC_PORT: "9883"
+  ATOMIC_IP: "::"
+  ATOMIC_DOMAIN: "homeassistant.local"
+  ATOMIC_DATA_DIR: "/data/atomic/data"
+  ATOMIC_CONFIG_DIR: "/data/atomic/config"
+  ATOMIC_CACHE_DIR: "/data/atomic/cache"
+  ATOMIC_SKIP_VECTOR_INDEX: "true"
+
+schema: false
