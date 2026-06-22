@@ -1,8 +1,8 @@
 name: "Atomic Server"
 description: "Atomic Server running on Home Assistant"
-version: "raspberry-pi-5"
+version: "latest"
 slug: "atomic_server"
-url: "https://github.com/atomicdata-dev/hassio-atomic-server"
+url: "https://github.com/ontola/hassio-atomic-server"
 arch:
   - aarch64
 

@@ -10,15 +10,15 @@ This repository packages Atomic Server as a Home Assistant add-on.
 4. Add this repository URL:
 
    ```text
-   https://github.com/atomicdata-dev/hassio-atomic-server
+   https://github.com/ontola/hassio-atomic-server
    ```
 
 5. Install **Atomic Server**.
 
-The add-on uses the prebuilt Raspberry Pi 5 image:
+The add-on uses the prebuilt image:
 
 ```text
-docker.io/joepmeneer/atomic-server:raspberry-pi-5
+docker.io/joepmeneer/atomic-server:latest
 ```
 
 ## Access
