@@ -1,12 +1,27 @@
 name: "Atomic Server"
 description: "Atomic Server running on Home Assistant"
-version: "latest"
+# Doubles as the image tag: Home Assistant pulls `{image}:{version}`. `develop`
+# is the only tag CI actually refreshes, so this tracks the current build.
+#
+# The previous value, `latest`, was a tag nobody publishes. The pipeline's
+# metadata rules emit branch refs and semver only, and its publish step was
+# gated to develop/master, so no release ever pushed an image. `latest` came
+# from a one-off manual push in June 2026 and never moved again — this add-on
+# has been serving a two-month-old server without any sign that it was.
+#
+# Trade-off: a rolling tag gives Home Assistant no version string to compare,
+# so there is no update notification. Rebuild the add-on to pull a newer
+# `develop`. Once the pipeline publishes version tags, pin a real one here.
+version: "develop"
 slug: "atomic_server"
 url: "https://github.com/ontola/hassio-atomic-server"
 arch:
   - aarch64
 
-image: "docker.io/joepmeneer/atomic-server"
+# GHCR, not Docker Hub: org-owned rather than tied to a personal account, and
+# no anonymous pull rate limits. CI publishes to both during the transition;
+# this is the one that is meant to outlive it.
+image: "ghcr.io/ontola/atomic-server"
 init: false
 legacy: true
 stage: experimental
